@@ -1,0 +1,4 @@
+﻿  UserAccount.cpp
+C:\Users\bl4z3\source\repos\ClassOperatorOverloadProject\ClassOperatorOverloadProject\UserAccount.h(42,44): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\bl4z3\source\repos\ClassOperatorOverloadProject\ClassOperatorOverloadProject\UserAccount.h(50,44): warning C4227: anachronism used: qualifiers on reference are ignored
+  ClassOperatorOverloadProject.vcxproj -> C:\Users\bl4z3\source\repos\ClassOperatorOverloadProject\Debug\ClassOperatorOverloadProject.exe
