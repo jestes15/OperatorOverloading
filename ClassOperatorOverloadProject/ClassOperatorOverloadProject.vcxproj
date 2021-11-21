@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +146,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UserAccount.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="P11_in1.txt" />
+    <Text Include="P11_in2.txt" />
+    <Text Include="P11_in3.txt" />
+    <Text Include="P11_in4.txt" />
+    <Text Include="P11_in5.txt" />
+    <Text Include="P11_in6.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

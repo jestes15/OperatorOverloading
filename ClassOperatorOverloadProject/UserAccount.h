@@ -1,75 +1,21 @@
 #pragma once
-#include <cstdlib>
+#include <concepts>
+#include <vector>
 
-class UserAccount
+template<typename T>
+concept integral = std::integral<T>;
+
+template <typename T> requires integral<T>
+class vector_ext
 {
 private:
-	int x;
-	int y;
+	int _size = 0;
+	std::vector<T> _arr;
+
 public:
-
-	UserAccount(int x, int y)
+	vector_ext(std::vector<T>& array)
 	{
-		this->x = x;
-		this->y = y;
-	}
-
-	UserAccount()
-	{
-		this->x = 6;
-		this->y = 22;
-	}
-
-	void set_x(int x)
-	{
-		this->x = x;
-	}
-	 void set_y(int y)
-	{
-		this->y = y;
-	}
-
-	int get_x()
-	{
-		return this->x;
-	}
-	 int get_y()
-	{
-		return this->y;
-	}
-
-
-	UserAccount operator,(UserAccount& const b)
-	{
-		UserAccount acc;
-		acc.x = this->x + b.x;
-		acc.y = this->y + b.y;
-		return acc;
-	}
-
-	UserAccount operator+(UserAccount& const b)
-	{
-		UserAccount acc;
-		acc.x = this->x * b.x;
-		acc.y = this->y / b.y;
-
-		int volatile * const p_reg = reinterpret_cast<int*>(0x0);
-		*p_reg = acc.get_x() + acc.get_y();
-
-		return acc;
-	}
-
-	void operator++()
-	{
-		this->x++;
-		this->y++;
-		exit(1);
-	}
-
-	void operator++(int)
-	{
-		this->x++;
-		this->y++;
-		exit(1);
+		_arr = array;
+		_size = array.size();
 	}
 };

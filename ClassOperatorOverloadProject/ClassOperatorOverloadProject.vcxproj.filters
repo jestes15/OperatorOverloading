@@ -24,4 +24,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="P11_in1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="P11_in2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="P11_in3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="P11_in4.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="P11_in5.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="P11_in6.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

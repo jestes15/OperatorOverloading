@@ -1,0 +1,11 @@
+ABCDEFGabcdefg
+1234567
+)(*&^%$#@
+
+all characters not letters or digits below
+!@#$%^&*()_+-={}|\][:";'<>?/.,
+
+\n
+above 2 characters or counted as isspace?
+
+
