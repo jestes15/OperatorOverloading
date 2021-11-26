@@ -1,12 +1,13 @@
+
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
 #include <fstream>
-#include <vector>
 #include <numeric>
 
-#if (__cplusplus == 199711) || (__cplusplus == 201103L)
-#include <utility>
+#if (__cplusplus >= 201103L)
+#include <vector>
+#include <stdexcept>
 
 template <typename T>
 class vector_ext : std::vector<T>
@@ -23,84 +24,76 @@ public:
 
 	vector_ext<T> operator+(vector_ext<T>& vector_obj)
 	{
-		if(this->size() != vector_obj.size())
+		if (this->size() != vector_obj.size())
 			throw std::runtime_error("Vectors are different sizes");
 
 		vector_ext<T> _ret_vec(this->size());
 #ifdef _OPENMP
-		#pragma omp parallel
-		{
-			#pragma omp for
-			for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) + vector_obj.at(i);
-		}
+		#pragma omp parallel for
+		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
+			_ret_vec[i] = this->at(i) + vector_obj.at(i);
 #else
 		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) + vector_obj.at(i);
+			_ret_vec[i] = this->at(i) + vector_obj.at(i);
 #endif
 		return _ret_vec;
 	}
+
 	vector_ext<T> operator-(vector_ext<T>& vector_obj)
 	{
-		if(this->size() != vector_obj.size())
+		if (this->size() != vector_obj.size())
 			throw std::runtime_error("Vectors are different sizes");
 
 		vector_ext<T> _ret_vec(this->size());
 #ifdef _OPENMP
-		#pragma omp parallel
-		{
-			#pragma omp for
-			for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) - vector_obj.at(i);
-		}
+		#pragma omp parallel for
+		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
+			_ret_vec[i] = this->at(i) - vector_obj.at(i);
 #else
 		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) - vector_obj.at(i);
+			_ret_vec[i] = this->at(i) - vector_obj.at(i);
 #endif
 
 		return _ret_vec;
 	}
+
 	vector_ext<T> operator*(vector_ext<T>& vector_obj)
 	{
-		if(this->size() != vector_obj.size())
+		if (this->size() != vector_obj.size())
 			throw std::runtime_error("Vectors are different sizes");
 
 		vector_ext<T> _ret_vec(this->size());
 #ifdef _OPENMP
-		#pragma omp parallel
-		{
-			#pragma omp for
-			for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) * vector_obj.at(i);
-		}
+		#pragma omp parallel for
+		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
+			_ret_vec[i] = this->at(i) * vector_obj.at(i);
 #else
 		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) * vector_obj.at(i);
+			_ret_vec[i] = this->at(i) * vector_obj.at(i);
 #endif
 
 		return _ret_vec;
 	}
+
 	vector_ext<T> operator/(vector_ext<T>& vector_obj)
 	{
-		if(this->size() != vector_obj.size())
+		if (this->size() != vector_obj.size())
 			throw std::runtime_error("Vectors are different sizes");
 
 		vector_ext<T> _ret_vec(this->size());
 #ifdef _OPENMP
-		#pragma omp parallel
-		{
-			#pragma omp for
-			for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) / vector_obj.at(i);
-		}
+		#pragma omp parallel for
+		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
+			_ret_vec[i] = this->at(i) / vector_obj.at(i);
 #else
 		for (auto i = 0; i < static_cast<int>(_ret_vec.size()); i++)
-				_ret_vec[i] = this->at(i) / vector_obj.at(i);
+			_ret_vec[i] = this->at(i) / vector_obj.at(i);
 #endif
 
 		return _ret_vec;
 	}
 };
+
 class file_operations
 {
 private:
@@ -298,6 +291,7 @@ public:
 };
 
 #else
+#include <vector>
 
 class file_operations
 {
@@ -499,6 +493,8 @@ public:
 
 int main()
 {
+	std::cout << "The C++ version is: " << __cplusplus << std::endl;
+
 	auto* const fileIO = new file_operations();
 	fileIO->run();
 	delete(fileIO);
